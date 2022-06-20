@@ -1,2 +1,2 @@
 # Assignment
- programming a university assigment
+ repository use for programming a university assigment
