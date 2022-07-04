@@ -19,7 +19,7 @@ public:
 
 
 private:
-    //Members
+    // Members
     const Func* m_cTrue = nullptr;
     const Func* m_cFalse = nullptr;
 };
