@@ -1,27 +1,26 @@
 #include "ROBDD.h"
 #include <algorithm>
 
-Func *ROBDD::genTrue() {
-    return m_cTrue;
+ROBDD::ROBDD() : m_cTrue(new Func(true)), m_cFalse(new Func(false)) {}
+
+const Func &ROBDD::genTrue() const{
+    return *m_cTrue;
 }
 
-Func *ROBDD::genFalse() {
-    return m_cFalse
+const Func &ROBDD::genFalse() const {
+    return *m_cFalse;
 }
 
-Func *ROBDD::ite(const Func *i, const Func *t, const Func *e) {
-    if(i->isTrue())
+const Func &ROBDD::ite(const Func &i, const Func &t, const Func &e) {
+    if(i.isTrue())
         return t;
-    else if(i->isFalse())
+    else if(i.isFalse())
         return e;
     else{
-        const unsigned ciVar = std::min( std::min(i->getVar(), t->getVar()), e->getVar() );
-        const Func* T = ite(i->getThen(ciVar), t->getThen(ciVar), e->getThen(ciVar));
-        const Func* E = ite(i->getElse(ciVar), t->getElse(ciVar), e->getElse(ciVar));
-        return Func(ciVar, T, E);
+        unsigned ciVar = std::min( std::min(i.getVar(), t.getVar()), e.getVar() );
+        const Func& T = ite(*i.getThen(ciVar), *t.getThen(ciVar), *e.getThen(ciVar));
+        const Func& E = ite(*i.getElse(ciVar), *t.getElse(ciVar), *e.getElse(ciVar));
+        Func* tmp =  new Func(ciVar, T, E);
+        return *tmp;
     }
-}
-
-ROBDD::ROBDD() {
-
 }

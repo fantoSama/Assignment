@@ -13,9 +13,9 @@ public:
     ROBDD& operator=(const ROBDD& crArg) = delete;
 
     // Methods
-    Func* genTrue();
-    Func* genFalse();
-    Func* ite(const Func* i, const Func* t, const Func* e);
+    const Func& genTrue() const;
+    const Func& genFalse() const;
+    const Func& ite(const Func& i, const Func& t, const Func& e);
 
 
 private:

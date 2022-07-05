@@ -3,7 +3,7 @@ CFLAGS = -Wall -Wextra -Weffc++ -pedantic -fPIE
 C_DEBUG_FLAGS = -g
 RM = /bin/rm -f
 EXEC = ausgabe
-SRC = main.cpp Func.cpp
+SRC = main.cpp Func.cpp ROBDD.cpp
 OBJ = $(SRC:.cpp=.o)
 
 default: $(EXEC)
